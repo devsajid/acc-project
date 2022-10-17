@@ -25,19 +25,18 @@ exports.getProducts = async (req, res, next) => {
     filters = JSON.parse(filtersString);
 
     const queries = {};
-    //query
     if (req.query.sort) {
       const sortBy = req.query.sort.split(",").join(" ");
       queries.sortBy = sortBy;
       console.log(sortBy);
     }
-    //fields gt gte lt lte
+
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       queries.fields = fields;
       console.log(fields);
     }
-    //pagination
+    //
     if (req.query.page) {
       const { page = 1, limit = 7 } = req.query;
       const skip = (page - 1) * parseInt(limit);

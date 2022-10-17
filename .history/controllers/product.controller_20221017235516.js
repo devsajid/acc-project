@@ -25,13 +25,12 @@ exports.getProducts = async (req, res, next) => {
     filters = JSON.parse(filtersString);
 
     const queries = {};
-    //query
     if (req.query.sort) {
       const sortBy = req.query.sort.split(",").join(" ");
       queries.sortBy = sortBy;
       console.log(sortBy);
     }
-    //fields gt gte lt lte
+    //fi
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       queries.fields = fields;

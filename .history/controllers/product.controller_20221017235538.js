@@ -31,7 +31,7 @@ exports.getProducts = async (req, res, next) => {
       queries.sortBy = sortBy;
       console.log(sortBy);
     }
-    //fields gt gte lt lte
+    //fieldsgt
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       queries.fields = fields;
