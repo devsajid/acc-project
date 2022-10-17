@@ -7,13 +7,13 @@ exports.getProductsService = async (filters, queries) => {
     .sort(queries.sortBy)
     .select(queries.fields);
   const total = await Product.countDocuments(filters);
-  const pageCount = Math.ceil(total / queries.limit);
+  const pageCount = total/;
   // exports.getProductsService = async(limit)=>{
   //   const products =await Product
   //       .where("name").equals(/\w/)
   //       .where("quantity").gt(100).lt(600)
   //       .limit(2).sort({quantity:-1}).limit(+limit)
-  return { total, pageCount, products };
+  return { total, products };
 };
 
 exports.createProductService = async (data) => {

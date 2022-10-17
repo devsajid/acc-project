@@ -22,25 +22,18 @@ exports.getProducts = async (req, res, next) => {
       (match) => `$${match}`
     );
 
-    filters = JSON.parse(filtersString);
+    filters = JSON.parse(filtersString, query);
 
     const queries = {};
     if (req.query.sort) {
       const sortBy = req.query.sort.split(",").join(" ");
-      queries.sortBy = sortBy;
       console.log(sortBy);
+      queries.sortBy = sortBy;
     }
 
     if (req.query.fields) {
       const fields = req.query.fields.split(",").join(" ");
       queries.fields = fields;
-      console.log(fields);
-    }
-    if (req.query.page) {
-      const { page = 1, limit = 7 } = req.query;
-      const skip = (page - 1) * parseInt(limit);
-      queries.skip = skip;
-      queries.limit = parseInt(limit);
     }
     const products = await getProductsService(filters, queries);
 

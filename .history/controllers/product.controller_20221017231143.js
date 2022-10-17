@@ -37,10 +37,7 @@ exports.getProducts = async (req, res, next) => {
       console.log(fields);
     }
     if (req.query.page) {
-      const { page = 1, limit = 7 } = req.query;
-      const skip = (page - 1) * parseInt(limit);
-      queries.skip = skip;
-      queries.limit = parseInt(limit);
+      const skip=;
     }
     const products = await getProductsService(filters, queries);
 
